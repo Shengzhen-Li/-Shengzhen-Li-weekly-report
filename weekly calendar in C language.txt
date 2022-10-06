@@ -1,0 +1,117 @@
+//make the weekly calendar in C language
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int week,startDay,finishDay,day,mon,startDay2;
+    int month[12]={31,28,31,30,31,30,31,31,30,31,30,31,};
+
+
+    scanf("%d",&week);
+
+    if(week<1||week>53)
+    {
+        printf("Input Error, Program terminated.");
+    }
+    else
+    {
+
+        printf("\n");
+
+
+   if(week<=1)
+   {
+   startDay=1;
+   }
+   else
+   {
+       startDay=7*(week-2)+3;
+   }
+
+   if(startDay==1)
+   {
+       finishDay=2;
+   }
+   else if(startDay<359)
+   {
+       finishDay=startDay+6;
+   }
+   else
+   {
+       finishDay=365;
+   }
+
+   startDay2=startDay;
+
+
+    printf(" No.%d week in 2022 starts from No.%d day to No.%d day.\n\n",week,startDay,finishDay);
+
+    printf(" #W:%10s%10s%10s%10s%10s%10s%10s\n","Mon.","Tues.","Wed.","Thur.","Fri.","Sat.","Sun.");
+
+    if(week<10){
+        printf(" 0%d:",week);
+
+    }
+    else
+    {
+        printf("%3d:",week);
+    }
+
+
+    int i=0;
+    mon=1,day=1;
+    for(i=0;startDay>month[i];i++)
+    {
+       mon++;
+       startDay=startDay-month[i];
+    }
+
+    if(week==1)
+    {
+        printf("                                                  ");
+    }
+    else
+    {
+        ;
+    }
+
+
+
+    int count;
+    day=startDay;
+    for(count=0;count+startDay2<=finishDay;count++)
+    {
+
+        if(startDay+count>month[i])
+        {
+            mon++;
+            day=1;
+
+
+        }
+        if(mon<10&&day>=10)
+        {printf("     0%d.%2d",mon,day);}
+        else if(mon<10&&day<10)
+        {
+            printf("     0%d.0%d",mon,day);
+        }
+        else if(mon>10&&day<10)
+        {
+            printf("     %2d.0%d",mon,day);
+        }
+        else
+        {
+            printf("     %2d.%2d",mon,day);
+        }
+         day++;
+
+    }
+    }
+
+
+
+    return 0;
+}
